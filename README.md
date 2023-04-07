@@ -25,5 +25,4 @@ ____
 3. Run main.py
 
 
-
-<img src='https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/bot1.png?raw=true' align="left"><img src='https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/bot2.png?raw=true' align="left">
+<img src='https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/bot2.png?raw=true' width='500'><img src='https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/bot1.png?raw=true' width='500'>
