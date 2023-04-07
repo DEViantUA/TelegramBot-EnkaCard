@@ -3,7 +3,7 @@ from telebot.async_telebot import AsyncTeleBot
 from enkcard import encard
 from enkcard.src.tools import translation
 
-bot = bot = AsyncTeleBot('5889242241:AAFyFUZeBz6zt0psJS7WQYjwP-xsJkA2B3I')
+bot = bot = AsyncTeleBot('TOKEN_KEY_BOT')
 
 url_load = "https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/loading.png"
 database = {} #You can replace this with any of your database
