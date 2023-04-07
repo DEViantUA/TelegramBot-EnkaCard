@@ -23,3 +23,7 @@ ____
 2. Open file main.py
 2. TOKEN_KEY_BOT - Replace with your token received from BotFather (line 7)
 3. Run main.py
+
+
+
+<img src='https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/bot1.png?raw=true' align="left"><img src='https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/bot2.png?raw=true' align="left">
