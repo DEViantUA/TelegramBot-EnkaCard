@@ -4,7 +4,7 @@ from enkcard import encard
 from enkcard.src.tools import translation
 import io
 
-bot = bot = AsyncTeleBot('5889242241:AAFyFUZeBz6zt0psJS7WQYjwP-xsJkA2B3I')
+bot = bot = AsyncTeleBot('TOKEN_KEY_BOT')
 
 database = {}
 
