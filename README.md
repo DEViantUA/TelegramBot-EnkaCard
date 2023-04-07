@@ -13,3 +13,13 @@ ____
 
 • [ENCard](https://github.com/DEViantUA/ENCard) - It is the EnkaCard add-on that is used and not the [EnkaCard](https://github.com/DEViantUA/EnkaCard) itself
 
+<br>
+
+____
+
+# Run:
+
+1. Dowload folder Mora For Morax
+2. Open file main.py
+2. TOKEN_KEY_BOT - Replace with your token received from BotFather (line 7)
+3. Run main.py
