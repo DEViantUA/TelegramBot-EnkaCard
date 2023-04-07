@@ -1,12 +1,12 @@
-import json,asyncio, re,telebot
+import json,asyncio, re,telebot,aiohttp,io
 from telebot.async_telebot import AsyncTeleBot
 from enkcard import encard
 from enkcard.src.tools import translation
-import io
 
-bot = bot = AsyncTeleBot('TOKEN_KEY_BOT')
+bot = bot = AsyncTeleBot('5889242241:AAFyFUZeBz6zt0psJS7WQYjwP-xsJkA2B3I')
 
-database = {}
+url_load = "https://raw.githubusercontent.com/DEViantUA/TelegramBot-EnkaCard/main/loading.png"
+database = {} #You can replace this with any of your database
 
 
 async def send_msg(peer,text,art = '', keyb = ''):
@@ -19,7 +19,15 @@ async def send_msg(peer,text,art = '', keyb = ''):
 
 async def edit_msg(peer,msg,texts = None,art = '', keyb = ''):
     if art != "":
-        media = telebot.types.InputMediaPhoto(art, caption='')
+        if type(art) == str:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(art) as resp:
+                    if resp.status != 200:
+                        return None
+                    image_bytes = io.BytesIO(await resp.read())
+            media = telebot.types.InputMediaPhoto(media=image_bytes.getvalue(), caption='')
+        else:
+            media = telebot.types.InputMediaPhoto(art, caption='')
         await bot.edit_message_media(chat_id=peer, message_id= msg, media=media, reply_markup=keyb)
     else:
         await bot.edit_message_text(chat_id=peer, message_id=msg, text = texts)
@@ -41,8 +49,7 @@ async def callbak(call):
     type_call = calls.get('type')
     if type_call == 'encard':
         async with encard.ENCard(lang=database[user_id].lang, characterName=ch) as enc:
-            result = await enc.create_cards(database[user_id].uid)
-
+            result, edit = await  asyncio.gather(enc.create_cards(database[user_id].uid),edit_msg(chat_id, mess_id, art=url_load))
         b = telebot.types.InlineKeyboardMarkup()
         button = []
         for character in database[user_id].charter:
@@ -59,9 +66,6 @@ async def callbak(call):
             await edit_msg(chat_id, mess_id, art=cards, keyb=b)
 
 
-
-
-# Получение сообщений от юзера
 @bot.message_handler(content_types=["text"])
 async def handle_text(message):
     uid = message.from_user.id
@@ -106,7 +110,6 @@ async def handle_text(message):
     else:
         await send_msg(chat_id, "❌ You must enter the 9 digit uid of your game profile in Genshin Impact")
 
-# Запускаем бота
 while True:
     try:
         asyncio.run(bot.polling(none_stop=True, interval=0))
